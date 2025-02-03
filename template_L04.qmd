@@ -2,48 +2,47 @@
 title: "L04 Judging Models"
 subtitle: "Data Science 2 with R (STAT 301-2)"
 author: "YOUR NAME"
+pagetitle: "L04 YOUR NAME"
+date: today
 
 format:
   html:
+    theme: cosmo
     toc: true
     toc-depth: 4
+    toc-location: left
     embed-resources: true
-    code-fold: show
+    code-fold: false
     link-external-newwindow: true
-    
+
 execute:
   warning: false
-  
-from: markdown+emoji   
+
+from: markdown+emoji
+reference-location: margin
+citation-location: margin  
 ---
 
-::: {.callout-important collapse="true"}
+:::{.callout-important collapse=true}
 ## When completing your lab write-up
 
 Students must work in an R project connected to a GitHub repository for each lab. The repository should be well organized and it should have all relevant files. Within the project/repo there should be
 
--   an appropriately named qmd file and
--   the associated rendered html file (see canvas for naming convention);
--   there should be multiple R scripts (appropriately named and ordered) completing the work in the labs;
--   students should create/update README files in GitHub accordingly;
+- an appropriately named qmd file and 
+- the associated rendered html file (see canvas for naming convention);
+- there should be multiple R scripts (appropriately named and ordered) completing the work in the labs;
+- students should create/update README files in GitHub accordingly;
 
-Data processing and model fitting, especially model fitting, can take significant computational time. Re-running time consuming processes when rendering a document is extremely inefficient and must be avoided.
+Data processing and model fitting, especially model fitting, can take significant computational time. Re-running time consuming processes when rendering a document is extremely inefficient and must be avoided. 
 
-This means students should practice writing these processes in scripts, saving results, and then loading them correctly when needed in their lab write-ups. It sometimes will be necessary to display code (show it, but don't run it) or even hide some code chunks when providing answers in the lab write-up.
-
-Remember to **make this document your own!** Meaning you should play with the layout and think about removing unnecessary sections or items (like this callout box block). Conversely you may end up adding sections or items. Make sure all of your solutions are clearly identified and communicated. 
+This means students should practice writing these processes in scripts, saving results, and then loading them correctly when needed in their lab write-ups. It sometimes will be necessary to display code (show it, but don't run it) or even hide some code chunks when providing answers in the lab write-up. 
 :::
 
-::: {.callout-important collapse="true"}
-## Load Package(s) & Setting a Seed
+::: {.callout-note collapse=true}
+## Setting a Seed
+Now that we are performing steps that involve randomness (for example data splitting) it is best practice to set a seed for the pseudo random algorithms. 
 
-Recall that it is best practice to load your packages towards the top of your document.
-
-Now that we are performing steps that involve randomness (for example data splitting and fitting random forest models) it is best practice to set a seed for the pseudo random algorithms.
-
-**Why?** Because it ensures our random steps are reproducible which has all kinds of practical benefits. Kind of mind blowing to replicate things that are supposed to be random!
-
-Students should set the seed directly before any random process and make a comment/note at the top of any R script that alerts potential users that a random process is being used.
+**Why?** Because it ensures our random steps are reproducible which has all kinds of practical benefits. Kind of mind blowing to replicate things that are supposed to be random! 
 :::
 
 ::: {.callout-tip icon="false"}
@@ -58,7 +57,7 @@ To link to your github **repo**sitory, appropriately edit the example link below
 
 The goals for this lab are to continue using the `recipes` package to preform feature engineering, use the `yardstick` package to assess and compare models, and to train binary classification models.
 
-This lab covers material up to and including [9. Judging model effectiveness](https://www.tmwr.org/performance.html) from [Tidy Modeling with R](https://www.tmwr.org/). We are tying up the bare minimum needed to build predictive models using `tidymodels`.
+This lab covers material up to and including [9. Judging model effectiveness](https://www.tmwr.org/performance.html) from [Tidy Modeling with R](https://www.tmwr.org/).
 
 ## Exercises
 
@@ -70,7 +69,7 @@ For this exercise, we will be working with a data set from the UCI (University o
 
 The age of an abalone is typically determined by cutting the shell open and counting the number of rings with a microscope. The purpose of this data set is to determine whether abalone age (**number of rings + 1.5**) can be accurately predicted using other, easier-to-obtain information about the abalone.
 
-The full abalone data set is located in the `data/` subdirectory. Read it into *R* as a tibble. Take a moment to read through the codebook (`abalone_codebook.txt`) and familiarize yourself with the variable definitions.
+The full abalone data set is located in the `data/` subdirectory. Read it into R as a tibble. Take a moment to read through the codebook (`abalone_codebook.txt`) and familiarize yourself with the variable definitions.
 
 ::: {.callout-note icon="false"}
 ## Prediction goal
@@ -91,7 +90,7 @@ YOUR SOLUTION HERE
 
 #### Task 2
 
-Split the abalone data into a training set and a testing set. Use stratified sampling. You should decide on appropriate percentages for splitting the data. This should be done in the `exercise_1/1_initial_setup.R` script, but remember to provide display code for graders.  
+Split the abalone data into a training set and a testing set. Use stratified sampling. You should decide on an appropriate percentage for splitting the data. This should be done in the `exercise_1/1_initial_setup.R` script, but remember to provide display code for graders.  
 
 *Remember to set a seed so work is reproducible.*
 
@@ -233,7 +232,7 @@ The model assessment should be completed in `exercise_1/4_model_analysis.R`.
 
 :::
 
-No display code is required for this task because. Only need a confirmation that it has been completed. The output in the next task will verify that this has been done correctly. 
+No display code is required for this task. Only need a confirmation that it has been completed. The output in the next task will verify that this has been done correctly. 
 
 ::: {.callout-tip icon="false"}
 ## Solution
@@ -277,9 +276,9 @@ The goal is classification; specifically, to predict which passengers would surv
 
 #### Task 1
 
-Load the data from `data/titanic.csv` into *R* and familiarize yourself with the variables by reviewing the codebook (`data/titanic_codebook.csv`).
+Load the data from `data/titanic.csv` into R and familiarize yourself with the variables by reviewing the codebook (`data/titanic_codebook.csv`).
 
-Notice that `survived` and `pclass` should be changed to factors. When changing `survived` to a factor, you should reorder the factor so that `"Yes"` is the first level.
+Notice that `survived`, `pclass`, and `sex` should be changed to factors. When changing `survived` to a factor, you should reorder the factor so that `"Yes"` is the first level.
 
 ::: {.callout-tip icon="false"}
 ## Solution
